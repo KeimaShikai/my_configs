@@ -1,0 +1,58 @@
+URxvt.cursorBlink: 1
+URxvt.scrollBar: false
+URxvt*saveLines: 5000
+
+URxvt.font: xft:DejaVu Sans Mono:pixelsize=14
+URxvt.boldFont: xft:DejaVu Sans Mono:pixelsize=14
+URxvt.italicFont: xft:DejaVu Sans Mono:pixelsize=14
+URxvt.boldItalicFont: xft:DejaVu Sans Mono:pixelsize=14
+URxvt*boldColors: on
+
+URxvt.perl-lib: /home/keima/.config/urxvt/perl/
+!URxvt.perl-ext-common: tabbedex,resize-font,keyboard-select
+!URxvt.tabbed.autohide: true
+!URxvt.keysym.C-Escape: perl:keyboard-select:activate
+!URxvt.keysym.C-s: perl:keyboard-select:search
+!URxvt.keyboard-select.clipboard: true
+URxvt.perl-ext-common: resize-font
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.keysym.C-minus: resize-font:smaller 
+URxvt.keysym.C-0:     resize-font:bigger 
+URxvt.keysym.C-equal: resize-font:reset 
+
+// Transparency
+URxvt*.transparent: true
+!0 to 99 darkens, 101 to 200 lightens
+URxvt*.shading: 55
+
+//Gmn Frost
+URxvt*background:       #1C1C23
+URxvt*foreground:       #9BBBC6
+URxvt*cursorColor:      #9BBBC6
+URxvt*colorUL:          #1E828C
+
+
+URxvt*color0:           #323246
+URxvt*color8:           #323246
+
+URxvt*color1:           #5A7882
+URxvt*color9:           #5A7882
+
+URxvt*color2:           #8C8CA0
+URxvt*color10:          #8C8CA0
+
+URxvt*color3:           #1E828C
+URxvt*color11:          #1E828C
+
+URxvt*color4:           #3C788C
+URxvt*color12:          #3C788C
+
+URxvt*color5:           #6EA0B4
+URxvt*color13:          #6EA0B4
+
+URxvt*color6:           #6E8CA0
+URxvt*color14:          #6EBCA0
+
+URxvt*color7:           #96BEC8
+URxvt*color15:          #96BEC8

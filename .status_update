@@ -1,0 +1,52 @@
+#!/bin/sh
+
+cd $HOME
+
+while true; do
+    #Keyboard layout
+    if [ "$( xset -q|grep LED| awk '{ print $10 }'|cut -c 5 )" = "1" ]; then 
+        LAYOUT="Ru"; 
+    else
+        LAYOUT="En"; 
+    fi; 
+
+    #ESSID and RSSI
+    ESSID=$(sudo iwgetid | cut -d "\"" -f2);
+    if [ "$ESSID" = "" ]; then
+        ESSID="-----";
+        RSSI="";
+    else
+        ESSID="$ESSID";
+        #ESSID="$ESSID: ";
+        #RSSI="$(sudo iwconfig wlp3s0 | grep "Signal level" | cut -d "=" -f3 | cut -d " " -f1) dBm";
+    fi;
+    
+    #Volume
+    if [ "$(pactl list sinks | grep -m 1 "Звук выключен:" | cut -d " " -f3)" = "yes" ]; then
+        VOLUME=0%;
+    else
+        VOLUME=$(pactl list sinks | grep -m 1 "Громкость:" | tr -s ' ' | cut -d " " -f5);
+    fi;
+
+    #Battery charge value
+    if [ "$(acpitool -b | grep "Battery #1" | cut -d " " -f12)" = "" ]; then
+        BATTERY=$(acpitool -b | grep "Battery #1" | cut -d " " -f11 | cut -d "." -f1);
+    else
+        BATTERY=$(acpitool -b | grep "Battery #1" | cut -d " " -f11 | cut -d "," -f1 | cut -d "." -f1);
+    fi;
+    
+    #Battery status
+    if [ "$(acpitool | grep "AC adapter" | cut -d " " -f10)" = "online" ]; then
+        BATTERY_STATUS="+";
+    else 
+        BATTERY_STATUS="-";
+    fi;
+
+    #Remove shitty Desktop folder (fix it later. see '.config/user-dirs.dirs') 
+    rm -rf Desktop
+    nitrogen --restore #move it to the script file
+    
+    xsetroot -name "| $LAYOUT | $ESSID$RSSI | Vol: $VOLUME | Bat: $BATTERY% $BATTERY_STATUS | $( date +"%R" )"
+    sleep 1s
+done &
+
