@@ -29,8 +29,8 @@ set completeopt-=preview
 let g:ycm_add_preview_to_completeopt = 0
 " Buttons to evoke and hide preview
 let g:ycm_key_list_stop_completion = ['<C-y>']
-let g:ycm_key_invoke_completion = '<C-Space>'
-" Bindings for YcmCompleter 
+let g:ycm_key_invoke_completion = '<C-u>'
+" Bindings for YcmCompleter
 " (also you can bind GoToInclude, GoToDeclaration, GoToDefinition)
 " (also you can use smth like :rightbelow vertical YcmCompleter GoTo)
 noremap <F3> :tab YcmCompleter GoTo<CR> 
@@ -69,6 +69,9 @@ map <C-t> ,t<C-f><CR>
 " Show hidden files
 let NERDTreeShowHidden=1
 
+Bundle 'majutsushi/tagbar'
+nmap <F2> :TagbarToggle<CR><C-w><C-w>
+
 "Plugin 'stevearc/vim-arduino'
 "au BufRead,BufNewFile *.pde set filetype=arduino
 "au BufRead,BufNewFile *.ino set filetype=arduino
@@ -94,7 +97,7 @@ if has("syntax")
 endif
 
 " Added this for using tmux with standart color scheme
-set background=dark 
+set background=dark
 
 " Make Vim jump to the last position when reopening a file
 if has("autocmd")
@@ -102,10 +105,10 @@ if has("autocmd")
 endif
 
 " Search settings
-set ignorecase		" Do case insensitive matching
-set incsearch		" Incremental search
+set ignorecase      " Do case insensitive matching
+set incsearch       " Incremental search
 
-" Enable mouse usage 
+" Enable mouse usage
 set mouse=a
 
 " Source a global configuration file if available
@@ -114,8 +117,8 @@ if filereadable("/etc/vim/vimrc.local")
 endif
 
 " Allow to add to project 'vimrc' file
-set exrc
-set secure
+"set exrc
+"set secure
 
 " Settings for tabs
 set tabstop=4
@@ -131,7 +134,7 @@ set rnu
 
 " Display Vim command mode autocompletion list 
 set wildmenu
-set wildmode=longest:full,full 
+set wildmode=longest:full,full
 
 " Make backspace act properly
 :set backspace=indent,eol,start
@@ -140,8 +143,11 @@ set wildmode=longest:full,full
 :nmap <F1> :echo<CR>
 :imap <F1> <C-o>:echo<CR>
 
-" Quick save
-noremap <F5> :wa<CR>
+" Quick save/exit
+inoremap <C-F5> <Esc>:wa<CR>i
+inoremap <F5> <Esc>:wa<CR>
+noremap  <F5> :wa<CR>
+noremap  <F11> :q<CR>
 
 " Add automatic text wrapping for whole words
 set linebreak
@@ -155,9 +161,20 @@ set foldmethod=indent   " Use indentations to fold
 set foldcolumn=0        " Hide fold column
 set foldlevel=11        " Autoopen 11 levels of foldings when the file is open
 
-" Show tabs and spaces in the end of the line 
+" Show tabs and spaces in the end of the line
 set list
 set listchars=tab:>-,trail:-
+
+" Add an ability to use hotkeys in a normal mode
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+"set keymap=russian-jcukenwin "use Ctrl+6 to switch layout
+"imap <F1> <C-^>
+
+" Auto close for the {
+"imap { {<CR><CR>}<UP><Esc>cc
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
 
 "################################"
 "########FOR_MY_FUNCTIONS########"
@@ -167,7 +184,7 @@ set listchars=tab:>-,trail:-
 set colorcolumn=400
 highlight ColorColumn ctermbg=darkgray
 
-nnoremap <F2> :<C-U>call SummonColumn()<CR>
+nnoremap <F1> :<C-U>call SummonColumn()<CR>
 function SummonColumn()
     let c = &colorcolumn
     if c == 81
