@@ -51,7 +51,6 @@ Bundle 'Lokaltog/vim-powerline'
 set laststatus=2
 
 Plugin 'scrooloose/nerdcommenter'
-let mapleader=","
 set timeout timeoutlen=1500
 
 Plugin 'scrooloose/nerdtree'
@@ -120,13 +119,16 @@ endif
 "set exrc
 "set secure
 
+" Map LEADER button
+let mapleader=" "
+
 " Settings for tabs
 set tabstop=4
 set shiftwidth=4
 set smarttab
 set expandtab
 set smartindent
-noremap ,t :tabnew<CR>
+noremap <Leader>t :tabnew<CR>
 
 " Show line numbers
 set number
