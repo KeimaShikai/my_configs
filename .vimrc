@@ -64,7 +64,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Add an ability ti toggle NerdTree
 map <C-f> :NERDTreeToggle<CR>
-map <C-t> ,t<C-f><CR>
+map <C-t> :tabnew<CR><C-f>
 " Show hidden files
 let NERDTreeShowHidden=1
 
