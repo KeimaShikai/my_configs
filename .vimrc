@@ -19,25 +19,25 @@ Plugin 'VundleVim/Vundle.vim'
 
 " All of your Plugins must be added after this line
 "#############################"
-Plugin 'Valloric/YouCompleteMe'
-" Disable global config for YCM
-let g:ycm_confirm_extra_conf = 0
-" Look for extra configs in current dir
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-" Turn off the window with extra info about functions
-set completeopt-=preview
-let g:ycm_add_preview_to_completeopt = 0
-" Buttons to evoke and hide preview
-let g:ycm_key_list_stop_completion = ['<C-y>']
-let g:ycm_key_invoke_completion = '<C-u>'
-" Bindings for YcmCompleter
-" (also you can bind GoToInclude, GoToDeclaration, GoToDefinition)
-" (also you can use smth like :rightbelow vertical YcmCompleter GoTo)
-noremap <F3> :tab YcmCompleter GoTo<CR> 
-noremap <F4> :YcmCompleter FixIt<CR>
+"Plugin 'Valloric/YouCompleteMe'
+"" Disable global config for YCM
+"let g:ycm_confirm_extra_conf = 0
+"" Look for extra configs in current dir
+"let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+"" Turn off the window with extra info about functions
+"set completeopt-=preview
+"let g:ycm_add_preview_to_completeopt = 0
+"" Buttons to evoke and hide preview
+"let g:ycm_key_list_stop_completion = ['<C-y>']
+"let g:ycm_key_invoke_completion = '<C-u>'
+"" Bindings for YcmCompleter
+"" (also you can bind GoToInclude, GoToDeclaration, GoToDefinition)
+"" (also you can use smth like :rightbelow vertical YcmCompleter GoTo)
+"noremap <F3> :tab YcmCompleter GoTo<CR> 
+"noremap <F4> :YcmCompleter FixIt<CR>
 
-Bundle 'rdnetto/YCM-Generator' 
-"To generate config use :YcmGenerateConfig
+"Bundle 'rdnetto/YCM-Generator' 
+""To generate config use :YcmGenerateConfig
 
 "Plugin 'francoiscabrol/ranger.vim'
 "let g:ranger_map_keys = 0
